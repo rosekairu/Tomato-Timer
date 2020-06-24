@@ -1,5 +1,4 @@
-{% extends 'base.html'%} {% import 'macros.html' as macro%}
-
+{% extends 'base.html'%}
 
 <!-- Styles block -->
 
@@ -10,79 +9,53 @@
 <link href="//cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
 <link rel="stylesheet" href="{{url_for('static',filename='css/style.css')}}">
 <link href='https://fonts.googleapis.com/css?family=Orbitron' rel='stylesheet' type='text/css'>
-<link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300' rel='stylesheet' type='text/css'>
-<link rel="shortcut icon" href="image/favicon.ico" type="image/x-icon"> {% endblock %}
+<link href='https://fonts.googleapis.com/css?family=Pacifico|Open+Sans:300' rel='stylesheet' type='text/css'> {% endblock %}
 
 <!-- Content block -->
 {% block content %}
 
-<div class="homeDiv">
-    <div class="">
-        <h3 class="homeHeading display-3">Random Quote To Brighten Up Your Day.</h3>
+<!--img src="../static/imgs/pmdr.jpg"-->
 
-        <div class="card">
-            <div class="card-header">
-                <h4 style="margin-left: 0.5in;">Always Remember To 😊 😁 </h4>
+<audio id="over_music">
+<source src="http://e.ggtimer.com/styles/beepbeep.mp3">
+</audio>
+
+<div class="box container  text-center" style="margin-top: 1.2in;">
+    <h2>Pomodoro Clock</h2>
+    <div class="row">
+        <div class="col-md-8 col-xs-8">
+            <div class="timer ">
+                <p class="time" id="time">25 : 00</p>
             </div>
-            <div class="div">
-                <div class="card">
-                    <div class="card text-left">
-                        <div class="card-body">
-                            <blockquote class="blockquote mb-0">
-                                <p>{{quote.quote}}</p>
-                                <footer class="blockquote-footer">
-                                    <p>
-                                        <strong style="font-style: italic;">Author :</strong>
-                                        <small><span style="text-decoration: underline; font-size: 15px;">{{quote.author}}</span></small>
-                                        <cite title="Source Title"> sourced from: {{quote.permalink}}</cite>
-                                    </p>
-                                </footer>
-                            </blockquote>
-                        </div>
-                    </div>
+            <div class="text-left">
+                Work <span class="badge" id="workSignal" style="background-color: orange"> </span> &nbsp; Rest <span class="badge" id="restSignal"> </span>
+            </div><br>
+            <div class="progress">
+                <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%">
                 </div>
             </div>
+            <p class="mobile-control">
+                <a class="btn btn-primary start" href="#">Start</a>&nbsp;&nbsp;
+                <a class="btn btn-primary reset" href="#">Reset</a>
+            </p>
+        </div><br>
+        <div class="panel col-md-4 col-xs-4">
+            <p>
+                <a class="btn badge badge-primary" id="workMore">+</a> <span class="text"> <span id="workTime">25</span> Minutes </span><a class="btn badge badge-primary" id="workLess">-</a>
+            </p><br>
+            <p>
+                <a class="btn badge badge-primary" id="restMore">+</a><span class="text"> <span id="restTime">5</span> Minutes </span><a class="btn badge badge-primary" id="restLess">-</a>
+            </p>
+            <p class="desktop-control">
+                <a class="btn btn-primary start" href="#">Start</a>&nbsp;&nbsp;
+                <a class="btn btn-primary reset" href="#">Reset</a>
+            </p>
+        </div>
+    </div>
+</div>
 
-            <audio id="over_music">
-                <source src="http://e.ggtimer.com/styles/beepbeep.mp3">
-                </audio>
 
-            <div class="box container  text-center">
-                <h2>Pomodoro Clock</h2>
-                <div class="row">
-                    <div class="col-md-8 col-xs-8">
-                        <div class="timer ">
-                            <p class="time" id="time">25 : 00</p>
-                        </div>
-                        <div class="text-left">
-                            Work <span class="badge" id="workSignal" style="background-color: orange"> </span> Rest <span class="badge" id="restSignal"> </span>
-                        </div><br>
-                        <div class="progress">
-                            <div class="progress-bar progress-bar-warning" role="progressbar" aria-valuenow="60" aria-valuemin="0" aria-valuemax="100" style="width:0%">
-                            </div>
-                        </div>
-                        <p class="mobile-control">
-                            <a class="btn btn-primary start" href="#">Start</a>&nbsp;&nbsp;
-                            <a class="btn btn-primary reset" href="#">Reset</a>
-                        </p>
-                    </div><br>
-                    <div class="panel col-md-4 col-xs-4">
-                        <p>
-                            <a class="btn badge badge-primary" id="workMore">+</a> <span class="text"> <span id="workTime">25</span> Minutes </span><a class="btn badge badge-primary" id="workLess">-</a>
-                        </p><br>
-                        <p>
-                            <a class="btn badge badge-primary" id="restMore">+</a><span class="text"> <span id="restTime">5</span> Minutes </span><a class="btn badge badge-primary" id="restLess">-</a>
-                        </p>
-                        <p class="desktop-control">
-                            <a class="btn btn-primary start" href="#">Start</a>&nbsp;&nbsp;
-                            <a class="btn btn-primary reset" href="#">Reset</a>
-                        </p>
-                    </div>
-                </div>
-            </div>
-            <br>
+<script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
+<script src="{{url_for('static',filename='js/script.js')}}"></script>
 
-            <script src="//cdn.bootcss.com/jquery/3.1.1/jquery.min.js"></script>
-            <script src="{{url_for('static',filename='js/script.js')}}"></script>
-
-            {% endblock%}
+{% endblock%}
